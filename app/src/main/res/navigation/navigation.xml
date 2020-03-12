@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/groceryListFragment">
+    <fragment
+        android:id="@+id/groceryListFragment"
+        android:name="com.example.bestgrocerylistapp.grocerylist.GroceryListFragment"
+        android:label="fragment_grocery_list"
+        tools:layout="@layout/fragment_grocery_list" >
+        <action
+            android:id="@+id/action_groceryListFragment_to_groceryStoreFragment"
+            app:destination="@id/groceryStoreFragment" />
+        <action
+            android:id="@+id/action_groceryListFragment_to_updategrocery"
+            app:destination="@id/updateGrocery" />
+    </fragment>
+    <fragment
+        android:id="@+id/groceryStoreFragment"
+        android:name="com.example.bestgrocerylistapp.grocerystore.GroceryStoreFragment"
+        android:label="fragment_grocery_store"
+        tools:layout="@layout/fragment_grocery_store" >
+        <action
+            android:id="@+id/action_groceryStoreFragment_to_groceryListFragment"
+            app:destination="@id/groceryListFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@+id/addGroceryFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_groceryStoreFragment_to_addGroceryFragment"
+            app:destination="@id/addGroceryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGroceryFragment"
+        android:name="com.example.bestgrocerylistapp.addgrocery.AddGroceryFragment"
+        android:label="AddGroceryFragment"
+        tools:layout="@layout/fragment_add_grocery">
+        <argument
+            android:name="groceryId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_addGroceryFragment_to_groceryStoreFragment"
+            app:destination="@id/groceryStoreFragment" />
+        <action
+            android:id="@+id/action_addGroceryFragment_to_groceryListFragment"
+            app:destination="@id/groceryListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateGrocery"
+        android:name="com.example.bestgrocerylistapp.updategrocery.UpdateGroceryFragment"
+        android:label="UpdateGroceryFragment"
+        tools:layout="@layout/fragment_update_grocery">
+        <action
+            android:id="@+id/action_updategrocery_to_groceryListFragment"
+            app:destination="@id/groceryListFragment" />
+        <argument
+            android:name="groceryListId"
+            app:argType="long" />
+    </fragment>
+</navigation>
